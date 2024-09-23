@@ -34,15 +34,15 @@ def extract():
     extracted_data = pd.DataFrame(columns=['name','height','weight']) # create an empty data frame to hold extracted data 
      
     # process all csv files 
-    for csvfile in glob.glob("*.csv"): 
+    for csvfile in glob.glob('extracted_data/*.csv'):
         extracted_data = pd.concat([extracted_data, pd.DataFrame(extract_from_csv(csvfile))], ignore_index=True) 
          
     # process all json files 
-    for jsonfile in glob.glob("*.json"): 
+    for jsonfile in glob.glob('extracted_data/*.json'):
         extracted_data = pd.concat([extracted_data, pd.DataFrame(extract_from_json(jsonfile))], ignore_index=True) 
      
     # process all xml files 
-    for xmlfile in glob.glob("*.xml"): 
+    for xmlfile in glob.glob('extracted_data/*.xml'):
         extracted_data = pd.concat([extracted_data, pd.DataFrame(extract_from_xml(xmlfile))], ignore_index=True) 
          
     return extracted_data 
