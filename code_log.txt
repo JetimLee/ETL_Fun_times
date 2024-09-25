@@ -1,0 +1,17 @@
+2024-09-24 18:48:39,480 - Process started.
+2024-09-24 18:48:40,315 - Data extraction complete.
+2024-09-24 18:53:29,356 - Process started.
+2024-09-24 18:53:29,745 - Data extraction complete.
+2024-09-24 18:53:29,747 - Data transformation complete.
+2024-09-24 18:53:29,749 - Data saved to CSV.
+2024-09-24 18:53:29,751 - Data loaded to database.
+2024-09-24 18:53:29,751 - Queries executed.
+2024-09-24 18:53:29,751 - Process complete.
+2024-09-24 18:55:46,023 - Process started.
+2024-09-24 18:55:47,028 - Data extraction complete.
+2024-09-24 18:55:47,608 - Exchange rate CSV downloaded.
+2024-09-24 18:55:47,614 - Data transformation complete.
+2024-09-24 18:55:47,615 - Data saved to CSV.
+2024-09-24 18:55:47,617 - Data loaded to database.
+2024-09-24 18:55:47,618 - Queries executed.
+2024-09-24 18:55:47,618 - Process complete.
