@@ -14,6 +14,17 @@ def log_progress(message):
     logging.info(message)
 
 
+# Task 1b: Log DataFrames and key outputs
+def log_dataframe(df, message):
+    log_progress(message)
+    logging.info("\n" + df.to_string())
+
+
+def log_output(output, message):
+    log_progress(message)
+    logging.info(str(output))
+
+
 # Task 2: Extract the tabular information from the given URL and save it to a dataframe
 def extract():
     url = "https://web.archive.org/web/20230908091635/https://en.wikipedia.org/wiki/List_of_largest_banks"
@@ -38,6 +49,7 @@ def extract():
     df["MC_USD_Billion"] = df["MC_USD_Billion"].astype(float)  # Convert to float
 
     log_progress("Data extraction complete.")
+    log_dataframe(df, "Extracted DataFrame:")
     return df
 
 
@@ -69,6 +81,7 @@ def transform(df):
     df["MC_INR_Billion"] = (df["MC_USD_Billion"] * inr_rate).round(2)
 
     log_progress("Data transformation complete.")
+    log_dataframe(df, "Transformed DataFrame:")
     return df
 
 
@@ -76,6 +89,7 @@ def transform(df):
 def load_to_csv(df):
     df.to_csv("./Largest_banks_data.csv", index=False)
     log_progress("Data saved to CSV.")
+    log_output("./Largest_banks_data.csv", "CSV file saved at path:")
 
 
 # Task 5: Load the transformed dataframe to an SQL database server as a table
@@ -84,6 +98,7 @@ def load_to_db(df):
     df.to_sql("Largest_banks", conn, if_exists="replace", index=False)
     conn.close()
     log_progress("Data loaded to database.")
+    log_output("Largest_banks table in Banks.db", "Database loaded with table:")
 
 
 # Task 6: Run queries on the database table
@@ -95,6 +110,7 @@ def run_queries():
     cur.execute("SELECT AVG(MC_GBP_Billion) FROM Largest_banks")
     avg_gbp = cur.fetchone()[0]
     print(f"Average Market Cap in GBP: {avg_gbp}")
+    log_output(avg_gbp, "Average Market Cap in GBP:")
 
     # Query 2: Get the 5th largest bank in EUR
     cur.execute(
@@ -104,6 +120,7 @@ def run_queries():
     print(
         f"5th largest bank by market cap in EUR: {fifth_bank[0]} with {fifth_bank[1]} Billion EUR"
     )
+    log_output(fifth_bank, "5th largest bank by market cap in EUR:")
 
     log_progress("Queries executed.")
     conn.close()
